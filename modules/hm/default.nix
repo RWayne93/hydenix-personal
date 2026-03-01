@@ -20,6 +20,7 @@ in
     ./theme.nix
     ./windowrules.nix
     ./warp-terminal.nix
+    ./zed.nix
     ./cursor-wallbash.nix
     ./k9s.nix
     ./spicetify.nix
