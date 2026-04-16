@@ -6,6 +6,9 @@
     ./freerdp.nix
     ./twingate.nix
     ./docker.nix
+    ./certs.nix
+    ./claude-code.nix
+    ./sleep.nix
   ];
 
   environment.systemPackages = [
@@ -13,6 +16,7 @@
     # pkgs.userPkgs.vscode - your personal nixpkgs version
 
     pkgs.gnome-keyring
+    pkgs.openssl
     pkgs.libsecret
     pkgs.seahorse
     pkgs.opensc
@@ -23,6 +27,7 @@
     pkgs.procps
     pkgs.nvtopPackages.full
     pkgs.p11-kit
+    pkgs.wl-clipboard
   ];
 
   services.gnome.gnome-keyring.enable = true;

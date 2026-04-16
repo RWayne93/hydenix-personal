@@ -1,4 +1,4 @@
-.direnv
+.direnv/
 *.qcow2
-result
-.git-hooks
+result/
+.git-hooks/

@@ -9,6 +9,8 @@
     nixpkgs-cursor.url = "github:nixos/nixpkgs/nixos-unstable";
     hydenix.url = "github:richen604/hydenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    librepods.url = "github:kavishdevar/librepods/linux/rust";
+    claude-code.url = "github:sadjow/claude-code-nix?ref=v2";
   };
 
   outputs =

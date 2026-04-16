@@ -12,11 +12,8 @@ CHANNEL="${ZED_CHANNEL:-stable}"
 get_latest_version() {
   local location
   location="$(
-    curl -s -L -D - -o /dev/null \
-      "https://cloud.zed.dev/releases/${CHANNEL}/latest/download?asset=zed&arch=x86_64&os=linux&source=update-zed.sh" \
-      | sed -n 's/^location: //Ip' \
-      | tr -d '\r' \
-      | tail -n1
+    curl -s -o /dev/null -w '%{redirect_url}' \
+      "https://cloud.zed.dev/releases/${CHANNEL}/latest/download?asset=zed&arch=x86_64&os=linux&source=update-zed.sh"
   )"
 
   if [[ -z "$location" ]]; then
@@ -24,7 +21,19 @@ get_latest_version() {
     exit 1
   fi
 
-  echo "$location" | sed -E 's|.*/v([^/]+)/.*|\1|'
+  local version
+  version="$(
+    echo "$location" | sed -E \
+      -e "s|.*/releases/${CHANNEL}/([^/]+)/download.*|\\1|" \
+      -e 's|.*/download/v([^/]+)/.*|\1|'
+  )"
+
+  if [[ -z "$version" || "$version" == "$location" ]]; then
+    echo "Error: Could not parse Zed version from redirect URL: $location" >&2
+    exit 1
+  fi
+
+  echo "$version"
 }
 
 to_sri() {

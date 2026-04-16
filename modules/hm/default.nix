@@ -19,6 +19,7 @@ in
     ./vscode.nix
     ./theme.nix
     ./windowrules.nix
+    ./git.nix
     ./warp-terminal.nix
     ./zed.nix
     ./cursor-wallbash.nix
@@ -26,6 +27,8 @@ in
     ./spicetify.nix
     ./uv.nix
     ./direnv.nix
+    ./librepods.nix
+    ./claude-code.nix
     ./chrome-opensc.nix
     ./carmy-rdp.nix
   ];
