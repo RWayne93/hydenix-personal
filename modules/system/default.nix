@@ -4,6 +4,7 @@
   imports = [
     # ./example.nix - add your modules here
     ./freerdp.nix
+    ./pcsc-rs.nix
     ./twingate.nix
     ./docker.nix
     ./certs.nix
@@ -21,7 +22,7 @@
     pkgs.seahorse
     pkgs.opensc
     pkgs.pcsc-tools
-    pkgs.ccid
+    # pkgs.ccid
     pkgs.gnupg
     pkgs.pinentry-gnome3
     pkgs.procps
@@ -31,11 +32,13 @@
   ];
 
   services.gnome.gnome-keyring.enable = true;
-  services.pcscd.enable = true;
-  services.pcscd.plugins = [ pkgs.ccid ];
+  # Stock pcscd/ccid kept here for quick rollback while testing pcsc-rs.
+  # services.pcscd.enable = true;
+  # services.pcscd.plugins = [ pkgs.ccid ];
 
   # Enable FreeRDP build with Wayland/audio/smartcard
   hydenix.system.freerdp.enable = true;
+  hydenix.system.pcsc-rs.enable = true;
 
   # GnuPG agent for smartcard-backed x509 signing via gpgsm
   programs.gnupg.agent.enable = true;
