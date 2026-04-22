@@ -5,7 +5,7 @@
     enable = true;
     policies = {
       SecurityDevices = {
-        "OpenSC PKCS#11 Module" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+        "smartcard-rs PKCS#11 Module" = "/home/nixie/smartcard-rs/target/release/libsmartcard_pkcs11.so";
       };
     };
   };

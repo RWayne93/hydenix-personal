@@ -19,7 +19,7 @@
     pkgs.openssl
     pkgs.libsecret
     pkgs.seahorse
-    pkgs.opensc
+    #pkgs.opensc
     pkgs.pcsc-tools
     pkgs.ccid
     pkgs.gnupg
@@ -42,10 +42,9 @@
   programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   # Register OpenSC via p11-kit (used by apps that consume p11-kit)
-  environment.etc."pkcs11/modules/opensc.module".text = ''
-    module: ${pkgs.opensc}/lib/opensc-pkcs11.so
-  '';
-
+  # environment.etc."pkcs11/modules/opensc.module".text = ''
+  #   module: ${pkgs.opensc}/lib/opensc-pkcs11.so
+  # '';
 
   # Unlock keyring on login (PAM) - SDDM is your display manager
   security.pam.services.sddm.enableGnomeKeyring = true;
