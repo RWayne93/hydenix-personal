@@ -31,6 +31,7 @@ in
     ./claude-code.nix
     ./chrome-opensc.nix
     ./carmy-rdp.nix
+    ./cursor.nix
   ];
 
   # home-manager options go here

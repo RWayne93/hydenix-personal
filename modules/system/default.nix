@@ -1,10 +1,25 @@
 { pkgs, ... }:
 
+let
+  kio-s3 = pkgs.callPackage ../../pkgs/kio-s3.nix {
+    inherit (pkgs.kdePackages)
+      extra-cmake-modules
+      kio
+      ki18n
+      kconfig
+      kcmutils
+      kirigami-addons
+      kdoctools
+    ;
+  };
+in
+
 {
   imports = [
     # ./example.nix - add your modules here
     ./freerdp.nix
     ./twingate.nix
+    ./tailscale.nix
     ./docker.nix
     ./certs.nix
     ./claude-code.nix
@@ -12,6 +27,7 @@
   ];
 
   environment.systemPackages = [
+    kio-s3
     # pkgs.vscode - managed via home-manager now
     # pkgs.userPkgs.vscode - your personal nixpkgs version
 
@@ -48,6 +64,12 @@
 
   # Unlock keyring on login (PAM) - SDDM is your display manager
   security.pam.services.sddm.enableGnomeKeyring = true;
+
+  # Allow LAN access to local development/services.
+  networking.firewall = {
+    allowPing = true;
+    allowedTCPPorts = [ 8081 ];
+  };
 
   # Ensure D-Bus session is available for secret service
   services.dbus.enable = true;

@@ -3,6 +3,7 @@
     ./certs/root.crt
     ./certs/dod-sw-ca-82.pem
     ./certs/dod-root-ca-6-bundle.pem
+    ./certs/caddy-gateway-root.crt
   ];
 
   environment.etc."docker/certs.d/registry.levelup.cce.af.mil/ca.crt".source =

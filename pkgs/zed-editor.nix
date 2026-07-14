@@ -10,14 +10,15 @@
   vulkan-loader,
   wayland,
   xorg,
+  glib,
 }:
 
 let
   pname = "zed-editor";
-  version = "0.228.0";
+  version = "1.9.0";
   channel = "stable";
-  x86Hash = "sha256-uuy483M9+VNGuDoYZNjekOm2MoWp9qZ8u06BYewz+L4=";
-  aarch64Hash = "sha256-xnUH86e2h2HN3ilI9Z8UJ8vPrfXTXiPJf6N+AenHsLk=";
+  x86Hash = "sha256-OeVTzjoA/ut46rY6XLcjfLRg88lZaxsZBSzre56OxN0=";
+  aarch64Hash = "sha256-/hwCwaC8GOu09n+TaGKpROapfGajZm7gvyzLrEfi6Dw=";
 
   linuxArch =
     if stdenv.hostPlatform.system == "x86_64-linux" then
@@ -31,6 +32,7 @@ let
   # (e.g. libasound) to exist on the host.
   runtimeLibs = [
     alsa-lib
+    glib
     libcap
     libxkbcommon
     libglvnd
