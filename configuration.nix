@@ -6,8 +6,7 @@
   # FOLLOW THE BELOW INSTRUCTIONS LINE BY LINE TO SET UP YOUR SYSTEM
 {
   imports = [
-    # hydenix inputs - Required modules, don't modify unless you know what you're doing
-    inputs.hydenix.inputs.home-manager.nixosModules.home-manager
+    # hydenix nixosModules.default already pulls in home-manager + homeModules
     inputs.hydenix.nixosModules.default
     ./modules/system # Your custom system modules
     ./hardware-configuration.nix # Auto-generated hardware config
@@ -46,14 +45,9 @@
     extraSpecialArgs = { inherit inputs; };
     # User Configuration - REQUIRED: Change "hydenix" to your actual username
     # This must match the username you define in users.users below
-    users."nixie" =
-      { ... }:
-      {
-        imports = [
-          inputs.hydenix.homeModules.default
-          ./modules/hm # Your custom home-manager modules (configure hydenix.hm here!)
-        ];
-      };
+    # Do not re-import hydenix.homeModules.default here — nixosModules.default
+    # already adds it via home-manager.sharedModules.
+    users."nixie" = import ./modules/hm;
   };
 
   # User Account Setup - REQUIRED: Change "hydenix" to your desired username (must match above)

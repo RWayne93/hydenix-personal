@@ -24,6 +24,7 @@ in
     ./certs.nix
     ./claude-code.nix
     ./sleep.nix
+    ./zen-kernel-image.nix
   ];
 
   environment.systemPackages = [

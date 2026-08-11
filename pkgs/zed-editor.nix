@@ -15,10 +15,10 @@
 
 let
   pname = "zed-editor";
-  version = "1.9.0";
+  version = "1.12.1";
   channel = "stable";
-  x86Hash = "sha256-OeVTzjoA/ut46rY6XLcjfLRg88lZaxsZBSzre56OxN0=";
-  aarch64Hash = "sha256-/hwCwaC8GOu09n+TaGKpROapfGajZm7gvyzLrEfi6Dw=";
+  x86Hash = "sha256-08BmXNkzjB17lSiJkxZ9zFPbmPnc8c6jllglsuKZ8qc=";
+  aarch64Hash = "sha256-QdBGlPzgWk/p14XKzQWYO3I1BQVB2KeHhVs/PhoOJt8=";
 
   linuxArch =
     if stdenv.hostPlatform.system == "x86_64-linux" then

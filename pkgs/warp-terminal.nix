@@ -21,7 +21,7 @@
 
 let
   pname = "warp-terminal";
-  version = "0.2026.07.08.17.54.stable_02";
+  version = "0.2026.08.05.09.03.stable_01";
   
   linux_arch = if stdenv.hostPlatform.system == "x86_64-linux" then "x86_64" else "aarch64";
 in
@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url = "https://releases.warp.dev/stable/v${version}/${pname}-v${version}-1-${linux_arch}.pkg.tar.zst";
     hash = if linux_arch == "x86_64" then
-      "sha256-V3JOpewD6cLx+k/8pvfYQYDevoZTWEhh+Azk3fc0DR4=" else
+      "sha256-Rj9W2Fbnz3OfzgV4OOmI4ryyB1DOyLBtD6LyZ5FyGmY=" else
       "sha256-/baDz+NFH6rCYF5r9iSXL6k3Aa+Cew8/FQPIoY5lwOU=";
   };
 

@@ -39,6 +39,9 @@ in
     cursorPkgs.code-cursor
     pkgs.google-chrome
     pkgs.kdePackages.okular
+    # HyDE blue-light filter daemon expects this on PATH; hydenix ships the
+    # config but not the package.
+    pkgs.hyprsunset
     # pkgs.vscode - hydenix's vscode version
     # pkgs.userPkgs.vscode - your personal nixpkgs version
   ];
